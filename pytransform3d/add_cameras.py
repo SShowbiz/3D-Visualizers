@@ -25,7 +25,7 @@ with open(intrinsic_path, "r") as i, open(extrinsic_path, "r") as e:
             R = R_world2cv.T
 
             T_world2cv = translation2translation_matrix(tx=tx, ty=ty, tz=tz)
-            location = -R_cv2world @ T_world2cv
+            location = -R @ T_world2cv
             extrinsic = np.vstack((np.hstack((R, location)), np.array([0, 0, 0, 1])))
             extrinsics.append(extrinsic)
 
